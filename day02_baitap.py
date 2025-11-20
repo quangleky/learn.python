@@ -185,12 +185,144 @@ else:
     print("Không ai nhận được học bổng.")
 
 
-#Bài 8 Tính giá vé coi phim
+#Bài 8 Giá vé coi phim theo ngày.
 print("=" * 100)
-print(" " * 10 + "Bài 8: Tính giá vé coi phim." + " " * 10)
+print(" " * 10 + "Bài 8: Giá vé coi phim theo ngày." + " " * 10)
 print("\n")
 
-thu2_4 = int(input("Tổng số vé bán được từ ngày thứ 2 đến ngày thừ 4 là : "))
-thu5 = int(input("Tổng số vé bán được từ ngày thứ 5 là : "))
-thu6_cn = int(input("Tổng số vé bán được từ ngày thứ 6 đến ngày chúa nhựt là : "))
+import datetime
+
+today = datetime.date.today()
+thu = today.weekday() + 2
+
+if 2 <= thu <= 4:
+    gia_ve = 45000
+elif thu == 5:
+    gia_ve = 55000
+else:
+    gia_ve = 75000
+
+tuoi = int(input("Bạn bao nhiêu tuôi : "))
+dang_di_hoc = input("Bạn còn đi học không (Y/N) : ").lower() == 'y'
+
+giam_gia = 0
+
+if tuoi <= 12:
+    giam_gia = 0.5
+elif dang_di_hoc:
+    giam_gia = 0.2
+
+tien_phai_tra = gia_ve * (1 - giam_gia)
+
+print(f"Giá gốc : {gia_ve}đ")
+if giam_gia > 0:
+    print(f"Được giảm : {int(giam_gia * 100)}%")
+print(f"Tiền phải trả : {tien_phai_tra:,.0f}đ")
+
+
+#Bài 9 Kiểm tra số chẵn/lẻ.
+print("=" * 100)
+print(" " * 10 + "Bài 9: Kiểm tra số chẵn/lẻ." + " " * 10)
+print("\n")
+
+so_n = int(input("Nhập số bất kỳ : "))
+
+if so_n % 2 == 0:
+    print(f"{so_n} là số chẵn.")
+else:
+    print(f"{so_n} là số lẻ.")
+
+
+#Bài 10 Tìm số lớn nhứt.
+print("=" * 100)
+print(" " * 10 + "Bài 10: Tìm số lớn nhứt." + " " * 10)
+print("\n")
+
+a = int(input("Nhập số thứ nhứt : "))
+b = int(input("Nhập số thứ hai : "))
+c = int(input("Nhập số thứ ba : "))
+
+print("-" * 60)
+
+if a > b and a > c:
+    print(f"{a} là số có giá trị lớn nhứt.")
+elif b > a and b > c:
+    print(f"{b} là số có giá trị lớn nhứt.")
+else:
+    print(f"{c} là số có giá trị lớn nhứt.")
+
+#Bài 11 Kiểm tra số nguyên tố.
+print("=" * 100)
+print(" " * 10 + "Bài 11: Kiểm tra số nguyên tố." + " " * 10)
+print("\n")
+
+n = int(input("Nhập số cần kiểm tra : "))
+
+print("-" * 60)
+
+while True:
+    n1 = math.sqrt(n)
+    if n % n1 == 0:
+        print(f"{n} là số nguyên tố.")
+    else:
+        print(f"{n} không phải là số nguyên tố.")
+    break
+
+#Bài 12 Tính giá vé coi phim.
+print("=" * 100)
+print(" " * 10 + "Bài 12: Tính giá vé coi phim." + " " * 10)
+print("\n")
+
+ngay = int(input("Chọn ngày mua vé (1 - 7 , 1 = CN) : "))
+
+if 2 <= ngay <= 4:
+    gia_goc = 45000
+elif ngay == 5:
+    gia_goc = 55000
+else:
+    gia_goc = 75000
+print(f"Hôm nay ngày thứ {ngay} giá vé là : {gia_goc:,.0f} ")
+
+print("-" * 50)
+
+do_tuoi = int(input("Bạn bao nhiêu tuổi : "))
+di_hoc = input("Bạn còn đi học không? (y/n) : ")
+
+print("-" * 50)
+
+gia_giam = 0
+
+if do_tuoi < 12:
+    gia_giam = 0.5
+elif di_hoc:
+    gia_giam = 0.2
+
+thanh_toan = gia_goc * (1 - gia_giam)
+
+print(f"Giá gốc : {gia_goc:,.0f}đ")
+if gia_giam > 0:
+    print(f"Bạn được giảm {int(gia_giam * 100)}%")
+print(f"Tiền phải trả : {thanh_toan}")
+
+#Bài 13 Game đoán tuổi.
+print("=" * 100)
+print(" " * 10 + "Bài 13: Game đoán tuổi." + " " * 10)
+print("\n")
+
+import random
+
+ket_qua = int(random.randint(1, 200))
+so_lan_doan = 0
+
+while True:
+    so_khach_doan = int(input("Bạn đoán tui bao nhiêu tuổi : "))
+    so_lan_doan += 1
+
+    if so_khach_doan == ket_qua:
+        print(f"Chúc mừng bạn đã đoán đúng tuổi của tui. Sau {so_lan_doan} lần đoán.")
+        break
+    elif so_khach_doan > ket_qua:
+        print("Nhìn tui già vậy sao.")
+    else:
+        print("Tui già hơn bạn nghĩ đó.")
 
